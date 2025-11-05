@@ -19,13 +19,30 @@ class Archiver:
         self.ENCRYPT_OUTPUT_PATH = "./encrypt_output.txt"
         self.ARCHIVE_PATH = "./archive_output.txt"
         self.DECRYPT_OUTPUT_PATH = "./decrypt_output.txt"
+        self.CT_ONLY_PATH = os.path.splitext(self.ENCRYPT_OUTPUT_PATH)[0] + "_ciphertext_only.txt"
         self.FULL_IV_HEX = iv_hex
+        
+    def input_file_checker(self, _filepath):
+        """
+        Check if input files exist and are not empty.
+        Raise exceptions with descriptive messages if checks fail.
+        """
+        # Check key file
+        if not os.path.exists(_filepath):
+            raise FileNotFoundError(f"Key file not found: {_filepath}")
+            
+        if os.path.getsize(_filepath) == 0:
+            raise ValueError(f"Key file is empty: {_filepath}")
         
     def encrypt(self):
         """
         AES-256-CTR compatible with CyberChef
         Uses full 16-byte IV as counter block, increments entire block
         """
+        # Validate input files
+        self.input_file_checker(self.KEY_PATH)
+        self.input_file_checker(self.ENCRYPT_INPUT_PATH)
+        
         # Read key and plaintext
         with open(self.KEY_PATH, "rb") as f:
             key_material = f.read()
@@ -76,8 +93,8 @@ class Archiver:
         with open(self.ENCRYPT_OUTPUT_PATH, "wb") as f:
             f.write(blob_b64)
 
-        ct_only_path = os.path.splitext(self.ENCRYPT_OUTPUT_PATH)[0] + "_ciphertext_only.txt"
-        with open(ct_only_path, "w", encoding="utf-8") as f:
+        
+        with open(self.CT_ONLY_PATH, "w", encoding="utf-8") as f:
             f.write(f"IV (hex): {full_iv.hex()}\n")
             f.write(f"IV (base64): {base64.b64encode(full_iv).decode()}\n")
             try:
@@ -106,6 +123,10 @@ class Archiver:
 
     def decrypt(self):
         """Decrypt using same CyberChef-compatible CTR logic"""
+        # Validate input files
+        self.input_file_checker(self.KEY_PATH)
+        self.input_file_checker(self.ENCRYPT_OUTPUT_PATH)
+        
         with open(self.KEY_PATH, "rb") as f:
             key_material = f.read()
         key_material = key_material.rstrip(b'\r\n \t')
@@ -146,3 +167,57 @@ class Archiver:
 
         with open(self.DECRYPT_OUTPUT_PATH, "wb") as f:
             f.write(plaintext)
+
+    def cleanup_all(self):
+        """
+        Remove all output files and truncate input files to zero size.
+        """
+        # Remove output files if they exist
+        self.cleanup_output_only()
+        
+        # Truncate input files to zero size
+        input_files = [self.KEY_PATH, self.ENCRYPT_INPUT_PATH]
+        
+        # Warn user before truncating input files
+        print("\nWARNING: The following input files will be truncated to zero size:")
+        for file_path in input_files:
+            if os.path.exists(file_path):
+                print(f"  - {file_path}")
+        
+        confirmation = input("\nThis action cannot be undone. Type 'YES' to confirm truncation: ")
+        
+        if confirmation.strip().upper() == 'YES':
+            # Truncate input files to zero size
+            for file_path in input_files:
+                if os.path.exists(file_path):
+                    try:
+                        with open(file_path, "w") as f:
+                            f.truncate(0)
+                        print(f"Truncated file to zero size: {file_path}")
+                    except Exception as e:
+                        print(f"Failed to truncate {file_path}: {e}")
+                else:
+                    print(f"Input file not found (skipping truncate): {file_path}")
+        else:
+            print("Truncation cancelled. Input files were not modified.")
+
+    def cleanup_output_only(self):
+        """
+        Remove all output files and truncate input files to zero size.
+        """
+        # List of output files to remove
+        output_files = [
+            self.ENCRYPT_OUTPUT_PATH,
+            self.ARCHIVE_PATH,
+            self.DECRYPT_OUTPUT_PATH,
+            self.CT_ONLY_PATH
+        ]
+        
+        # Remove output files if they exist
+        for file_path in output_files:
+            if os.path.exists(file_path):
+                try:
+                    os.remove(file_path)
+                    print(f"Removed file: {file_path}")
+                except Exception as e:
+                    print(f"Failed to remove {file_path}: {e}")

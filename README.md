@@ -10,6 +10,10 @@ Many BBS services don't support Archive Operations yet. When you have the need t
                                                (IV Value) ---                              | --- (Archived Message)
                                                                      (Original Message) --- 
 ```
+### CyberChef Recipe
+- **./CyberChef_Encrypt_Recipe.txt**: Definition for Encryption.
+- **./CyberChef_Decrypt_Recipe.txt**: Definition for Decryption.
+
 
 ## Environment Preparation
 1. Clone the Project to your local drive.
@@ -20,14 +24,14 @@ python -m pip install cryptography
 ```
 
 ## Archive Operations
-1. Copy `Original Message` to `.\encrypt_input.txt`.
-2. Write your Natual Language `Key String` to `.\key.txt`.
+1. Copy `Original Message` to `./encrypt_input.txt`.
+2. Write your Natual Language `Key String` to `./key.txt`.
 3. (Optional) `Environment Preparation`.
 4. Run in System Cmd Console:
 ```python
-.\python bbs_msg_archiver.py
+./python bbs_msg_archiver.py
 ```
-5. Get `Archived Cipher Message` from `.\archive_output.txt` in Section:
+5. Get `Archived Cipher Message` from `./archive_output.txt` in Section:
 ```
 -- ARCHIVED TEXT --
 ARCHIVED TEXT (base64):
@@ -35,14 +39,14 @@ ARCHIVED TEXT (base64):
 6. Update to your BBS Post.
 
 ## De-Archive Operations
-1. Copy `Archived Cipher Message` to `.\encrypt_output.txt`.
-2. Write your Natual Language `Key String` to `.\key.txt`.
+1. Copy `Archived Cipher Message` to `./encrypt_output.txt`.
+2. Write your Natual Language `Key String` to `./key.txt`.
 3. (Optional) `Environment Preparation`.
 4. Run in System Cmd Console:
 ```python
-.\python bbs_msg_dearchiver.py
+./python bbs_msg_dearchiver.py
 ```
-5. Get `Original Message` from `.\decrypt_output.txt`.
+5. Get `Original Message` from `./decrypt_output.txt`.
 
 ## Contribution
 Contributions are welcome! Please submit a pull request for any enhancements or bug fixes.
