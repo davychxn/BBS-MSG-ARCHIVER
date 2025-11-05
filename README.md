@@ -12,11 +12,8 @@ Many BBS services don't support Archive Operations yet. When you have the need t
 ```
 
 ### CyberChef Recipe
-Definition for Encryption:
-![Definition for Encryption](./cyberchef/CyberChef_Encrypt_Recipe.txt)
-
-Definition for Decryption:
-![Definition for Encryption](./cyberchef/CyberChef_Decrypt_Recipe.txt)
+1. [Definition for Encryption](./cyberchef/CyberChef_Encrypt_Recipe.txt)
+2. [Definition for Decryption](./cyberchef/CyberChef_Decrypt_Recipe.txt)
 
 ## Environment Preparation
 1. Clone the Project to your local drive.
