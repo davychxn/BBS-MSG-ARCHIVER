@@ -1,0 +1,6 @@
+[
+  { "op": "AES Encrypt",
+    "args": [{ "option": "Hex", "string": "c374af6f83d102e840b8bd73be552342e2baed1dc433c19d7e8818221bf30d6f" }, { "option": "Hex", "string": "0123456789ABCDEF0123456789ABCDEF" }, "CTR", "Raw", "Raw", { "option": "Hex", "string": "" }] },
+  { "op": "To Base64",
+    "args": ["A-Za-z0-9+/="] }
+]
