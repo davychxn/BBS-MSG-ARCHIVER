@@ -7,7 +7,7 @@ Usage: To Archive BBS Message
 """
 
 import os
-from Archiver import Archiver
+from classes.Archiver import Archiver
 
 if __name__ == "__main__":
     archiver = Archiver()

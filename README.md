@@ -11,9 +11,11 @@ Many BBS services don't support Archive Operations yet. When you have the need t
                                                                      (Original Message) --- 
 ```
 ### CyberChef Recipe
-- **./CyberChef_Encrypt_Recipe.txt**: Definition for Encryption.
-- **./CyberChef_Decrypt_Recipe.txt**: Definition for Decryption.
+Definition for Encryption:
+![Definition for Encryption](cyberchef/CyberChef_Encrypt_Recipe.txt)
 
+Definition for Decryption:
+![Definition for Encryption](cyberchef/CyberChef_Decrypt_Recipe.txt)
 
 ## Environment Preparation
 1. Clone the Project to your local drive.
@@ -29,7 +31,7 @@ python -m pip install cryptography
 3. (Optional) `Environment Preparation`.
 4. Run in System Cmd Console:
 ```python
-./python bbs_msg_archiver.py
+python bbs_msg_archiver.py
 ```
 5. Get `Archived Cipher Message` from `./archive_output.txt` in Section:
 ```
@@ -44,7 +46,7 @@ ARCHIVED TEXT (base64):
 3. (Optional) `Environment Preparation`.
 4. Run in System Cmd Console:
 ```python
-./python bbs_msg_dearchiver.py
+python bbs_msg_dearchiver.py
 ```
 5. Get `Original Message` from `./decrypt_output.txt`.
 
@@ -53,13 +55,13 @@ ARCHIVED TEXT (base64):
 ### Cleanup Outputs
 Run in System Cmd Console:
 ```python
-./python cleanup_output_only.py
+python cleanup_output_only.py
 ```
 
 ### Cleanup Outputs + Truncate Input & Key To 0 Size
 Run in System Cmd Console:
 ```python
-./python cleanup_all.py
+python cleanup_all.py
 ```
 
 ## Contribution
