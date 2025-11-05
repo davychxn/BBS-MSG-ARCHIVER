@@ -5,15 +5,16 @@ Many BBS services don't support Archive Operations yet. When you have the need t
 
 ## Techinal Details
 ```
-(Natual Language Key String) --- [SHA256] --- [HEX Array] --- 
-                                                             | --- [AES-256-CTR Cipher] --- 
-                                               (IV Value) ---                              | --- (Archived Message)
-                                                                     (Original Message) --- 
+                                                    (Original Message) --- 
+                                                                          |
+(Natual Language Key String) --- [SHA256] --- [HEX Key] ---               |
+                                                           | --- [AES-256-CTR Cipher] --- (Archived Message)
+                                               (HEX IV) ---
 ```
 
-### CyberChef Recipe
-1. [Definition for Encryption](./cyberchef/CyberChef_Encrypt_Recipe.txt)
-2. [Definition for Decryption](./cyberchef/CyberChef_Decrypt_Recipe.txt)
+### CyberChef Recipes
+1. [Definition of Encryption](./cyberchef/CyberChef_Encrypt_Recipe.txt)
+2. [Definition of Decryption](./cyberchef/CyberChef_Decrypt_Recipe.txt)
 
 ## Environment Preparation
 1. Clone the Project to your local drive.
