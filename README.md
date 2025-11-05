@@ -27,7 +27,7 @@ python -m pip install cryptography
 ## Archive Operations
 1. Copy `Original Message` to `./encrypt_input.txt`.
 2. Write your Natual Language `Key String` to `./key.txt`.
-3. (Optional) `Environment Preparation`.
+3. (Optional) [Environment Preparation](#environment-preparation).
 4. Run in System Cmd Console:
 ```python
 python bbs_msg_archiver.py
@@ -42,7 +42,7 @@ ARCHIVED TEXT (base64):
 ## De-Archive Operations
 1. Copy `Archived Cipher Message` to `./encrypt_output.txt`.
 2. Write your Natual Language `Key String` to `./key.txt`.
-3. (Optional) `Environment Preparation`.
+3. (Optional) [Environment Preparation](#environment-preparation).
 4. Run in System Cmd Console:
 ```python
 python bbs_msg_dearchiver.py
