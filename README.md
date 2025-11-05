@@ -48,5 +48,19 @@ ARCHIVED TEXT (base64):
 ```
 5. Get `Original Message` from `./decrypt_output.txt`.
 
+## Cleanup Operations
+
+### Cleanup Outputs
+Run in System Cmd Console:
+```python
+./python cleanup_output_only.py
+```
+
+### Cleanup Outputs + Truncate Input & Key To 0 Size
+Run in System Cmd Console:
+```python
+./python cleanup_all.py
+```
+
 ## Contribution
 Contributions are welcome! Please submit a pull request for any enhancements or bug fixes.
