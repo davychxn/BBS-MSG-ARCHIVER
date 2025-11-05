@@ -36,6 +36,7 @@ python bbs_msg_archiver.py
 ```
 -- ARCHIVED TEXT --
 ARCHIVED TEXT (base64):
+[[[ARCHIVED TEXT HERE]]]
 ```
 6. Update to your BBS Post.
 
