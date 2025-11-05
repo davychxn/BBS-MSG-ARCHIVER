@@ -10,12 +10,13 @@ Many BBS services don't support Archive Operations yet. When you have the need t
                                                (IV Value) ---                              | --- (Archived Message)
                                                                      (Original Message) --- 
 ```
+
 ### CyberChef Recipe
 Definition for Encryption:
-![Definition for Encryption](cyberchef/CyberChef_Encrypt_Recipe.txt)
+![Definition for Encryption](./cyberchef/CyberChef_Encrypt_Recipe.txt)
 
 Definition for Decryption:
-![Definition for Encryption](cyberchef/CyberChef_Decrypt_Recipe.txt)
+![Definition for Encryption](./cyberchef/CyberChef_Decrypt_Recipe.txt)
 
 ## Environment Preparation
 1. Clone the Project to your local drive.
