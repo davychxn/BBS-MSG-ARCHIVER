@@ -14,6 +14,13 @@ from datetime import datetime
 
 class Archiver:
     def __init__(self, key_text_replacer = None, iv_hex = "0123456789ABCDEF0123456789ABCDEF"):
+        """
+        Constructor
+        @key_text_replacer:
+            None: Output Plain Key Text to 'archive_output.txt'
+            Empty str: Hide Key Text in 'archive_output.txt'
+            Non-Empty str: Output Non-Empty str Replacer to 'archive_output.txt'
+        """
         self.KEY_TEXT_REPLACER = key_text_replacer
         self.KEY_PATH = "./key.txt"
         self.ENCRYPT_INPUT_PATH = "./encrypt_input.txt"
@@ -118,7 +125,7 @@ class Archiver:
             if self.KEY_TEXT_REPLACER is None:
                 af.write(f"KEY TEXT: {key_material}\n")
             elif len(self.KEY_TEXT_REPLACER) == 0:
-                af.write("KEY TEXT: <PUT YOUR KEY TEXT HERE>\n")
+                af.write("KEY TEXT: <YOUR KEY TEXT HIDDEN>\n")
             else:
                 af.write(f"KEY TEXT: {self.KEY_TEXT_REPLACER}\n")
             af.write(f"KEY (hex): {key_hex}\n")
