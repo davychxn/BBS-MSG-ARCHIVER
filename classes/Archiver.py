@@ -7,6 +7,7 @@ Usage: To Archive BBS Message
 """
 
 import os
+import zlib
 import base64
 from hashlib import sha256
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
@@ -26,6 +27,7 @@ class Archiver:
         self.ENCRYPT_INPUT_PATH = "./encrypt_input.txt"
         self.ENCRYPT_OUTPUT_PATH = "./encrypt_output.txt"
         self.ARCHIVE_PATH = "./archive_output.txt"
+        self.ARCHIVE_IMAGE_PATH = "./archive_output.png"
         self.DECRYPT_OUTPUT_PATH = "./decrypt_output.txt"
         self.CT_ONLY_PATH = os.path.splitext(self.ENCRYPT_OUTPUT_PATH)[0] + "_ciphertext_only.txt"
         self.FULL_IV_HEX = iv_hex
@@ -42,7 +44,7 @@ class Archiver:
         if os.path.getsize(_filepath) == 0:
             raise ValueError(f"Key file is empty: {_filepath}")
         
-    def encrypt(self):
+    def encrypt(self, text_limit = 4000):
         """
         AES-256-CTR compatible with CyberChef
         Uses full 16-byte IV as counter block, increments entire block
@@ -59,6 +61,8 @@ class Archiver:
 
         with open(self.ENCRYPT_INPUT_PATH, "rb") as f:
             plaintext = f.read()
+            
+        plaintext_zipped = self.compress_and_encode(plaintext)
 
         # Use full 16-byte IV
         full_iv = bytes.fromhex(self.FULL_IV_HEX)
@@ -70,7 +74,7 @@ class Archiver:
         
         ciphertext = bytearray()
         block_size = 16
-        num_blocks = (len(plaintext) + block_size - 1) // block_size
+        num_blocks = (len(plaintext_zipped) + block_size - 1) // block_size
 
         for i in range(num_blocks):
             # Create counter block for this iteration
@@ -82,10 +86,10 @@ class Archiver:
             encryptor = cipher_obj.encryptor()
             keystream = encryptor.update(current_counter_block) + encryptor.finalize()
 
-            # XOR with plaintext
+            # XOR with plaintext_zipped
             start = i * block_size
             end = start + block_size
-            plain_block = plaintext[start:end]
+            plain_block = plaintext_zipped[start:end]
             cipher_block = bytes(b ^ k for b, k in zip(plain_block, keystream))
             ciphertext.extend(cipher_block)
 
@@ -101,7 +105,6 @@ class Archiver:
         with open(self.ENCRYPT_OUTPUT_PATH, "wb") as f:
             f.write(blob_b64)
 
-        
         with open(self.CT_ONLY_PATH, "w", encoding="utf-8") as f:
             f.write(f"IV (hex): {full_iv.hex()}\n")
             f.write(f"IV (base64): {base64.b64encode(full_iv).decode()}\n")
@@ -135,7 +138,7 @@ class Archiver:
             af.write("ARCHIVED TEXT (base64):\n")
             af.write(ciphertext_b64.decode() + "")
 
-    def decrypt(self):
+    def decrypt(self, image_path = None):
         """Decrypt using same CyberChef-compatible CTR logic"""
         # Validate input files
         self.input_file_checker(self.KEY_PATH)
@@ -177,10 +180,42 @@ class Archiver:
             plain_block = bytes(c ^ k for c, k in zip(cipher_block, keystream))
             plaintext.extend(plain_block)
 
-        plaintext = bytes(plaintext)
+        plaintext_zipped = bytes(plaintext)
+        
+        plaintext = self.decode_and_decompress(plaintext_zipped)
 
         with open(self.DECRYPT_OUTPUT_PATH, "wb") as f:
             f.write(plaintext)
+
+    def compress_and_encode(self, data):
+        """
+        Compresses data and returns it as bytes.
+        Args:
+            data (bytes): Input bytes to compress.
+        
+        Returns:
+            bytes: The compressed data.
+        """
+        # Compress the bytes
+        compressed_data = zlib.compress(data)
+
+        return compressed_data
+
+
+    def decode_and_decompress(self, compressed_data):
+        """
+        Reverses compress_and_encode: takes bytes and returns the original decompressed *bytes*.
+        
+        Args:
+            compressed_data (bytes): Output from compress_and_encode().
+        
+        Returns:
+            bytes: Original decompressed raw bytes.
+        """
+        # Decompress -> original bytes
+        data = zlib.decompress(compressed_data)
+        
+        return data
 
     def cleanup_all(self):
         """
