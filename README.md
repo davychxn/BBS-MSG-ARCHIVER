@@ -165,7 +165,7 @@ python -m pip install cryptography
 ## Contribution
 Contributions are welcome! Please submit a pull request for any enhancements or bug fixes.
 
-## Dual Licenses (LGPL-3.0 + Commercial License)
+## Dual Licenses
 
 This project is dual-licensed:
 
