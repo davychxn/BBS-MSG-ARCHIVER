@@ -35,13 +35,14 @@ python bbs_msg_archiver.py
 5. Update complete content of `./archive_output.txt` to your BBS Post.
 
 ## De-Archive Operations
-1. Copy `Archived Cipher Message` from `./archive_output.txt` in Section:
+1. Copy `Archived Cipher Message` from `./archive_output.txt` in Field `ARCHIVED TEXT (base64)`:
 ```
 -- ARCHIVED TEXT --
 ARCHIVED TEXT (base64):
 [[[ARCHIVED CIPHER MESSAGE HERE]]]
 ```
    to `./encrypt_output.txt`.
+   
 2. Write your Natual Language `Key String` to `./key.txt`.
 3. (Optional) [Environment Preparation](#environment-preparation).
 4. Run in System Cmd Console:
@@ -58,21 +59,18 @@ python bbs_msg_dearchiver.py
 2. Load CyberChef Decrypt Recipe here:
 ![Load CyberChef Decrypt Recipe](./assets/cyberchef/load_decrypt_recipe.jpg)
 
-3. Copy content of [CyverChef Decryption Recipe](./cyberchef/CyberChef_Decrypt_Recipe.txt) to:
+3. Copy content of [CyverChef Decryption Recipe](./cyberchef/CyberChef_Decrypt_Recipe.txt) to and LOAD:
 ![Fill in CyberChef Decrypt Recipe](./assets/cyberchef/load_decrypt_recipe2.jpg)
 
 4. Do the following values copy:
- ______________________________________________________
 |  COPY  |       FROM (FILE)       |   TO (CyberChef)  |
 |--------|-------------------------|-------------------|
 | ENTITY | archive_output.txt      | AES Decrypt UI    |
-|--------|-------------------------|-------------------|
-|        | KEY (hex)               | Key (HEX)         |
+| FIELDS | KEY (hex)               | Key (HEX)         |
 | FIELDS | FULL IV (hex)           | IV (HEX)          |
-|        | ARCHIVED TEXT (base64)  | Input             |
-|________|_________________________|___________________|
+| FIELDS | ARCHIVED TEXT (base64)  | Input             |
 
-5. Bake:
+5. BAKE to Output:
 ![BAKE !](./assets/cyberchef/decrypt.jpg)
 
 ## Cleanup Operations
