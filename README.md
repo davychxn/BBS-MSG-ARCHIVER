@@ -92,24 +92,24 @@ python bbs_msg_dearchiver.py
 ![Fill in CyberChef Decrypt Recipe](./assets/cyberchef/load_decrypt_recipe2.jpg)
 
 4. Do the following values copy:
- __________________________________________________________________________________________
-|  COPY  |       FROM (FILE: archive_output.txt)       |   TO (CyberChef: AES Decrypt UI)  |
-|--------|---------------------------------------------|-----------------------------------|
-| FIELDS | KEY (hex)                                   | Key (HEX)                         |
-| FIELDS | FULL IV (hex)                               | IV (HEX)                          |
-| FIELDS | ARCHIVED TEXT (base64)                      | Input                             |
+ ______________________________________________________________________________________________
+|  COPY  |        FROM (FILE: archive_output.txt)        |    TO (CyberChef: AES Decrypt UI)   |
+|--------|-----------------------------------------------|-------------------------------------|
+| FIELDS | `KEY (hex) `                                  | `Key (HEX)`                         |
+| FIELDS | `FULL IV (hex)`                               | `IV (HEX)`                          |
+| FIELDS | `ARCHIVED TEXT (base64)`                      | `Input`                             |
 
 5. BAKE to Output:
 ![BAKE !](./assets/cyberchef/decrypt.jpg)
 
 ## Show or Hide KEY TEXT In Archived Message
 Change input Argument `key_text_replacer` of Class `Archive`'s Constructor in `./bbs_msg_archiver.py` 
- _____________________________________________________________________________________________________________________________________
-|        |               key_text_replacer                |          Functionality            |       Seen In Archived Message        |
-|--------|------------------------------------------------|-----------------------------------|---------------------------------------|
-|        | None                                           | Show Key Text                     | `<KET TEXT>` (content of `./key.txt`) |
-|        | "" (Empty str)                                 | Hide Key Text                     | `<YOUR KEY TEXT HIDDEN>`              |
-|        | "<Customized Message>" (Non-Empty str)         | Show Customized Message           | `<Customized Message>`                |
+ _______________________________________________________________________________________________________________________________________
+|        |                key_text_replacer                 |          Functionality            |       Seen In Archived Message        |
+|--------|--------------------------------------------------|-----------------------------------|---------------------------------------|
+|        | `None`                                           | Show Key Text                     | `<KET TEXT>` (content of `./key.txt`) |
+|        | `""` (Empty str)                                 | Hide Key Text                     | `<YOUR KEY TEXT HIDDEN>`              |
+|        | `"<Customized Message>"` (Non-Empty str)         | Show Customized Message           | `<Customized Message>`                |
 
 ## Cleanup Operations
 
