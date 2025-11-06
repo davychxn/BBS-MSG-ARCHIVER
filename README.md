@@ -8,7 +8,7 @@ Many BBS services don't support Archive Operations yet. When you have the need t
                                                     (Original Message) --- 
                                                                           |
 (Natual Language Key String) --- [SHA256] --- [HEX Key] ---               |
-                                                           | --- [AES-256-CTR Cipher] --- (Archived Message)
+                                                           | --- [AES-256-CTR Cipher] --- (Archived Cipher Message)
                                                (HEX IV) ---
 ```
 
@@ -32,16 +32,16 @@ python -m pip install cryptography
 ```python
 python bbs_msg_archiver.py
 ```
-5. Get `Archived Cipher Message` from `./archive_output.txt` in Section:
+5. Update complete content of `./archive_output.txt` to your BBS Post.
+
+## De-Archive Operations
+1. Copy `Archived Cipher Message` from `./archive_output.txt` in Section:
 ```
 -- ARCHIVED TEXT --
 ARCHIVED TEXT (base64):
-**ARCHIVED TEXT HERE**
+[[[ARCHIVED CIPHER MESSAGE HERE]]]
 ```
-6. Update to your BBS Post.
-
-## De-Archive Operations
-1. Copy `Archived Cipher Message` to `./encrypt_output.txt`.
+   to `./encrypt_output.txt`.
 2. Write your Natual Language `Key String` to `./key.txt`.
 3. (Optional) [Environment Preparation](#environment-preparation).
 4. Run in System Cmd Console:
@@ -49,6 +49,31 @@ ARCHIVED TEXT (base64):
 python bbs_msg_dearchiver.py
 ```
 5. Get `Original Message` from `./decrypt_output.txt`.
+
+## De-Archive Operations With Online AES Decrypt Tools
+
+### CyberChef Example
+1. Open CyberChef: https://gchq.github.io/CyberChef/
+
+2. Load CyberChef Decrypt Recipe here:
+![Load CyberChef Decrypt Recipe](./assets/cyberchef/load_decrypt_recipe.jpg)
+
+3. Copy content of [CyverChef Decryption Recipe](./cyberchef/CyberChef_Decrypt_Recipe.txt) to:
+![Fill in CyberChef Decrypt Recipe](./assets/cyberchef/load_decrypt_recipe2.jpg)
+
+4. Do the following values copy:
+ ______________________________________________________
+|  COPY  |       FROM (FILE)       |   TO (CyberChef)  |
+|--------|-------------------------|-------------------|
+| ENTITY | archive_output.txt      | AES Decrypt UI    |
+|--------|-------------------------|-------------------|
+|        | KEY (hex)               | Key (HEX)         |
+| FIELDS | FULL IV (hex)           | IV (HEX)          |
+|        | ARCHIVED TEXT (base64)  | Input             |
+|________|_________________________|___________________|
+
+5. Bake:
+![BAKE !](./assets/cyberchef/decrypt.jpg)
 
 ## Cleanup Operations
 
