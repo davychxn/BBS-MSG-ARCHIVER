@@ -12,6 +12,26 @@ Many BBS services don't support Archive Operations yet. When you have the need t
                                                (HEX IV) ---
 ```
 
+## Archived Cipher Message Example
+```
+ARCHIVE TIME: 2025-11-06 13:00:17
+DE-ARCHIVE INSTRUCTION: https://github.com/davychxn/BBS-MSG-ARCHIVER
+ENCRYPTION ALGORITHM: AES-256-CTR
+PADDING: NONE (stream mode)
+NOTE: Compatible with CyberChef (full 16-byte counter, big-endian)
+
+-- KEY --
+KEY TEXT: <THE PERSON OF CONCERN'S BUSINESS EMAIL>
+KEY (hex): b2b9595e940627cf48ac78c28cf102b90a335b3a3dbd85f6ce17c848e890c8aa
+
+-- IV / NONCE --
+FULL IV (hex): 0123456789ABCDEF0123456789ABCDEF
+
+-- ARCHIVED TEXT --
+ARCHIVED TEXT (base64):
+jIHYNT79E5zm2p5AT7fvUrp8PYkiA9Am82l1XBQ9FbYNUXXbd2neAegHfCw=
+```
+
 ### CyberChef Recipes
 1. [Definition of Encryption](./cyberchef/CyberChef_Encrypt_Recipe.txt)
 2. [Definition of Decryption](./cyberchef/CyberChef_Decrypt_Recipe.txt)

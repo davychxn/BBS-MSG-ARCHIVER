@@ -13,7 +13,8 @@ from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from datetime import datetime
 
 class Archiver:
-    def __init__(self, iv_hex = "0123456789ABCDEF0123456789ABCDEF"):
+    def __init__(self, key_text_replacer = None, iv_hex = "0123456789ABCDEF0123456789ABCDEF"):
+        self.KEY_TEXT_REPLACER = key_text_replacer
         self.KEY_PATH = "./key.txt"
         self.ENCRYPT_INPUT_PATH = "./encrypt_input.txt"
         self.ENCRYPT_OUTPUT_PATH = "./encrypt_output.txt"
@@ -114,6 +115,12 @@ class Archiver:
             af.write("PADDING: NONE (stream mode)\n")
             af.write("NOTE: Compatible with CyberChef (full 16-byte counter, big-endian)\n")
             af.write("\n-- KEY --\n")
+            if self.KEY_TEXT_REPLACER is None:
+                af.write(f"KEY TEXT: {key_material}\n")
+            elif len(self.KEY_TEXT_REPLACER) == 0:
+                af.write("KEY TEXT: <PUT YOUR KEY TEXT HERE>\n")
+            else:
+                af.write(f"KEY TEXT: {self.KEY_TEXT_REPLACER}\n")
             af.write(f"KEY (hex): {key_hex}\n")
             af.write("\n-- IV / NONCE --\n")
             af.write(f"FULL IV (hex): {self.FULL_IV_HEX}\n")

@@ -10,5 +10,5 @@ import os
 from classes.Archiver import Archiver
 
 if __name__ == "__main__":
-    archiver = Archiver()
+    archiver = Archiver(key_text_replacer="<THE PERSON OF CONCERN'S BUSINESS EMAIL>")
     archiver.encrypt()
