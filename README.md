@@ -5,7 +5,7 @@ Many BBS services don't support Archive Operations yet. When you have the need t
 
 ## Techinal Details
 ```
-                                                    (Original Message) --- 
+                                  (Original Message) --- [Compression] --- 
                                                                           |
 (Natual Language Key String) --- [SHA256] --- [HEX Key] ---               |
                                                            | --- [AES-256-CTR Cipher] --- (Archived Cipher Message)
@@ -24,7 +24,7 @@ What's the pursuit of every Clearing Houses?
 No Default !
 ```
 
-### Archive Cipher Message (Update This To Your BBS Post)
+### Archived Cipher Message (Update This To Your BBS Post)
 ```
 ARCHIVE TIME: 2025-11-06 13:09:24
 DE-ARCHIVE INSTRUCTION: https://github.com/davychxn/BBS-MSG-ARCHIVER
@@ -44,9 +44,8 @@ ARCHIVED TEXT (base64):
 jIHYNT79E5zm2p5AT7fvUrp8PYkiA9Am82l1XBQ9FbYNUXXbd2neAegHfCw=
 ```
 
-### CyberChef Recipes
-1. [Definition of Encryption](./cyberchef/CyberChef_Encrypt_Recipe.txt)
-2. [Definition of Decryption](./cyberchef/CyberChef_Decrypt_Recipe.txt)
+### CyberChef Recipe
+[Definition of Decryption](./cyberchef/CyberChef_Decrypt_Recipe.txt)
 
 ## Environment Preparation
 1. Clone the Project to your local drive.
@@ -89,14 +88,13 @@ python bbs_msg_dearchiver.py
 2. Load CyberChef Decrypt Recipe here:
 ![Load CyberChef Decrypt Recipe](./assets/cyberchef/load_decrypt_recipe.jpg)
 
-3. Copy content of [CyverChef Decryption Recipe](./cyberchef/CyberChef_Decrypt_Recipe.txt) to `Recipe`, and LOAD:
+3. Copy content of [CyberChef Decryption Recipe](./cyberchef/CyberChef_Decrypt_Recipe.txt) to `Recipe`, and LOAD:
 ![Fill in CyberChef Decrypt Recipe](./assets/cyberchef/load_decrypt_recipe2.jpg)
 
 4. Do the following values copy:
  __________________________________________________________________________________________
 |  COPY  |       FROM (FILE: archive_output.txt)       |   TO (CyberChef: AES Decrypt UI)  |
 |--------|---------------------------------------------|-----------------------------------|
-| ENTITY | archive_output.txt                          | AES Decrypt UI                    |
 | FIELDS | KEY (hex)                                   | Key (HEX)                         |
 | FIELDS | FULL IV (hex)                               | IV (HEX)                          |
 | FIELDS | ARCHIVED TEXT (base64)                      | Input                             |
