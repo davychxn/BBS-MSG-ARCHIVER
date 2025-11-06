@@ -24,7 +24,7 @@ What's the pursuit of every Clearing Houses?
 No Default !
 ```
 
-### Archive Cipher Message
+### Archive Cipher Message (Update This To Your BBS Post)
 ```
 ARCHIVE TIME: 2025-11-06 13:09:24
 DE-ARCHIVE INSTRUCTION: https://github.com/davychxn/BBS-MSG-ARCHIVER
@@ -93,13 +93,13 @@ python bbs_msg_dearchiver.py
 ![Fill in CyberChef Decrypt Recipe](./assets/cyberchef/load_decrypt_recipe2.jpg)
 
 4. Do the following values copy:
- ______________________________________________________
-|  COPY  |       FROM (FILE)       |   TO (CyberChef)  |
-|--------|-------------------------|-------------------|
-| ENTITY | archive_output.txt      | AES Decrypt UI    |
-| FIELDS | KEY (hex)               | Key (HEX)         |
-| FIELDS | FULL IV (hex)           | IV (HEX)          |
-| FIELDS | ARCHIVED TEXT (base64)  | Input             |
+ __________________________________________________________________________________________
+|  COPY  |       FROM (FILE: archive_output.txt)       |   TO (CyberChef: AES Decrypt UI)  |
+|--------|---------------------------------------------|-----------------------------------|
+| ENTITY | archive_output.txt                          | AES Decrypt UI                    |
+| FIELDS | KEY (hex)                                   | Key (HEX)                         |
+| FIELDS | FULL IV (hex)                               | IV (HEX)                          |
+| FIELDS | ARCHIVED TEXT (base64)                      | Input                             |
 
 5. BAKE to Output:
 ![BAKE !](./assets/cyberchef/decrypt.jpg)
