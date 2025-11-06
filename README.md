@@ -102,6 +102,15 @@ python bbs_msg_dearchiver.py
 5. BAKE to Output:
 ![BAKE !](./assets/cyberchef/decrypt.jpg)
 
+## Show or Hide KEY TEXT In Archived Message
+Change input Argument `key_text_replacer` of Class `Archive`'s Constructor in `./bbs_msg_archiver.py` 
+ ______________________________________________________________________________________________________________________________________________________
+|        |           Value of key_text_replacer           |          Functionality            |   Seen In Archived Message (`./archive_output.txt`)    |
+|--------|------------------------------------------------|-----------------------------------|--------------------------------------------------------|
+|        | None                                           | Show Key Text                     | <KET TEXT> (content of `./key.txt`)                    |
+|        | "" (Empty str)                                 | Hide Key Text                     | `<YOUR KEY TEXT HIDDEN>`                               |
+|        | "<Customized Message>" (Non-Empty str)         | Show Customized Message           | <Customized Message>                                   |
+
 ## Cleanup Operations
 
 ### Cleanup Outputs
@@ -114,6 +123,41 @@ python cleanup_output_only.py
 Run in System Cmd Console:
 ```python
 python cleanup_all.py
+```
+
+## All Input & Output Files Reference
+ ______________________________________________________________________________________________________________________________
+|  Input/Output  |               Filename                 |                            Usage                                   |
+|----------------|----------------------------------------|--------------------------------------------------------------------|
+| Input          | `./encrypt_input.txt`                  | `Original Message`                                                 |
+| Input          | `./key.txt`                            | `Key String` (Natual Language)                                     |
+| Output/Input   | `./encrypt_output.txt`                 | `Archived Cipher Text + IV`                                        |
+| Output         | `./encrypt_output_ciphertext_only.txt` | `Archived Cipher Text Only` (Without IV)                           |
+| Output         | `./archive_output.txt`                 | `Archived Cipher Text To Update To BBS` (With Decrypt Information) |
+| Output         | `./decrypt_output.txt`                 | `De-Archived Original Message`                                     |
+
+## All Cmds Reference
+
+### Archive
+```python
+python bbs_msg_archiver.py
+```
+### De-Archive
+```python
+python bbs_msg_dearchiver.py
+```
+### Cleanup Outputs Only
+```python
+python cleanup_output_only.py
+```
+### Cleanup Both Inputs & Outputs
+```python
+python cleanup_all.py
+```
+### Install Python Package Dependents
+```
+python -m pip install --upgrade pip
+python -m pip install cryptography
 ```
 
 ## Contribution
