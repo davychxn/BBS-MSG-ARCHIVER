@@ -1,3 +1,5 @@
+[![License](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
+
 # BBS MESSAGE ARCHIVER
 
 ## Overview
@@ -162,3 +164,19 @@ python -m pip install cryptography
 
 ## Contribution
 Contributions are welcome! Please submit a pull request for any enhancements or bug fixes.
+
+## 📄 License
+
+This project is dual-licensed:
+
+1. **Open Source**: Under the [GNU Lesser General Public License v3.0 (LGPL-3.0)](LICENSE) — free for non-commercial and open-source use.
+2. **Commercial Use**: A commercial license is available for closed-source projects, enterprise deployment, or relieve from compliance obligations.
+
+👉 [View Commercial License Options](LICENSE-Commercial.md)
+
+If you're using this library in a commercial product and want to:
+- Keep your source code private
+- Avoid LGPL distribution requirements
+- Get professional support
+
+Please contact us: **[davy.chen@1637.com](mailto:davy.chen@1637.com)** (Please remove the greatest numeric char from the email to contact, thanks)
