@@ -104,12 +104,12 @@ python bbs_msg_dearchiver.py
 
 ## Show or Hide KEY TEXT In Archived Message
 Change input Argument `key_text_replacer` of Class `Archive`'s Constructor in `./bbs_msg_archiver.py` 
- ______________________________________________________________________________________________________________________________________________________
-|        |           Value of key_text_replacer           |          Functionality            |   Seen In Archived Message (`./archive_output.txt`)    |
-|--------|------------------------------------------------|-----------------------------------|--------------------------------------------------------|
-|        | None                                           | Show Key Text                     | <KET TEXT> (content of `./key.txt`)                    |
-|        | "" (Empty str)                                 | Hide Key Text                     | `<YOUR KEY TEXT HIDDEN>`                               |
-|        | "<Customized Message>" (Non-Empty str)         | Show Customized Message           | <Customized Message>                                   |
+ _____________________________________________________________________________________________________________________________________
+|        |               key_text_replacer                |          Functionality            |       Seen In Archived Message        |
+|--------|------------------------------------------------|-----------------------------------|---------------------------------------|
+|        | None                                           | Show Key Text                     | `<KET TEXT>` (content of `./key.txt`) |
+|        | "" (Empty str)                                 | Hide Key Text                     | `<YOUR KEY TEXT HIDDEN>`              |
+|        | "<Customized Message>" (Non-Empty str)         | Show Customized Message           | `<Customized Message>`                |
 
 ## Cleanup Operations
 
