@@ -116,5 +116,29 @@ Run in System Cmd Console:
 python cleanup_all.py
 ```
 
+## All Cmds Reference
+
+### Encrypt
+```python
+python bbs_msg_archiver.py
+```
+### Decrypt
+```python
+python bbs_msg_dearchiver.py
+```
+### Cleanup Outputs Only
+```python
+python cleanup_output_only.py
+```
+### Cleanup Both Inputs & Outputs
+```python
+python cleanup_all.py
+```
+### Install Python Package Dependents
+```
+python -m pip install --upgrade pip
+python -m pip install cryptography
+```
+
 ## Contribution
 Contributions are welcome! Please submit a pull request for any enhancements or bug fixes.
