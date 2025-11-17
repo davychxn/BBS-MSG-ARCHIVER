@@ -1,4 +1,5 @@
 DECENT GUYS PRODUCTS COMMERCIAL LICENSE
+
 Version 1, 17 November 2025
 
 Copyright (C) 2025 Dawei Chen
