@@ -24,7 +24,6 @@ Individuals and Businesses
 |    Terms    |     Pricing     |
 |-------------|-----------------|
 | Yearly      | USD $10.00      |
-|-------------|-----------------|
 | Permanently | USD $30.00      |
 
 ### Benefits
