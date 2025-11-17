@@ -22,7 +22,7 @@ Individuals and Businesses
 ### Pricing:
  _______________________________
 |    Terms    |     Pricing     |
-|-------------------------------|
+|-------------|-----------------|
 | Yearly      | USD $10.00      |
 |-------------|-----------------|
 | Permanently | USD $30.00      |
@@ -49,13 +49,16 @@ Individuals and Businesses
 
 ### Pricing
 
-Pricing varies based on usage, company size, and support needs.
+Pricing varies based on usage, company size, and support needs. [Go to Contact](#Contact).
 
-## Benefits of Commercial License:
+### Benefits
 - Full rights to use, modify, and distribute the code without open-sourcing your product
 - Priority email and technical support
 - License indemnification and audit compliance
 - Custom feature development available
+
+
+## Contact
 
 Contact us: ![EMAIL](./assets/miscellaneous/email_pic2.jpg)
 
